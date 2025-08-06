@@ -47,11 +47,11 @@ const Chapter3: React.FC<Chapter3Props> = ({ onComplete }) => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Split Screen Background */}
+      {/* 温暖学习氛围分屏背景 */}
       <div className="absolute inset-0 flex">
-        {/* Left Side - Library */}
-        <div className={`w-1/2 relative transition-all duration-2000 ${sceneRestored ? 'filter-none' : 'filter grayscale contrast-75'}`}>
-          <div className="w-full h-full bg-gradient-to-b from-amber-100 via-orange-200 to-orange-300">
+        {/* 左侧 - 梦幻图书馆 */}
+        <div className={`w-1/2 relative scene-transition ${sceneRestored ? 'animate-color-restore' : 'filter grayscale contrast-75'}`}>
+          <div className="w-full h-full gradient-sunset relative overflow-hidden">
             {/* Bookshelves */}
             {[...Array(4)].map((_, i) => (
               <div
@@ -84,9 +84,9 @@ const Chapter3: React.FC<Chapter3Props> = ({ onComplete }) => {
           </div>
         </div>
 
-        {/* Right Side - Internet Cafe */}
-        <div className={`w-1/2 relative transition-all duration-2000 ${sceneRestored ? 'filter-none' : 'filter grayscale contrast-75'}`}>
-          <div className="w-full h-full bg-gradient-to-b from-blue-900 via-purple-900 to-indigo-900">
+        {/* 右侧 - 梦幻网吧 */}
+        <div className={`w-1/2 relative scene-transition ${sceneRestored ? 'animate-color-restore' : 'filter grayscale contrast-75'}`}>
+          <div className="w-full h-full gradient-ocean relative overflow-hidden">
             {/* Computer Monitors */}
             {[...Array(6)].map((_, i) => (
               <div
@@ -115,13 +115,17 @@ const Chapter3: React.FC<Chapter3Props> = ({ onComplete }) => {
         </div>
       </div>
 
-      {/* Chapter Title */}
+      {/* 学习主题章节标题 */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3">
-          <div className="flex items-center space-x-3">
-            <BookOpen className="w-6 h-6 text-amber-400" />
-            <h2 className="text-2xl font-bold text-white">第三章：图书馆与网吧的反差</h2>
+        <div className="glass-card rounded-2xl px-8 py-4 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-orange-400 to-purple-400"></div>
+          <div className="flex items-center space-x-4">
+            <div className="p-2 bg-amber-400/20 rounded-full">
+              <BookOpen className="w-6 h-6 text-amber-200" />
+            </div>
+            <h2 className="text-xl font-bold text-white tracking-wide">第三章：图书馆与网吧的反差</h2>
           </div>
+          <div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-300/20 rounded-full blur-lg"></div>
         </div>
       </div>
 

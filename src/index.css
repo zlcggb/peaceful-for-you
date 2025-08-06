@@ -1,3 +1,303 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 少女风玻璃质感色彩系统 */
+:root {
+  /* 灰色系统 - 柔和版本 */
+  --gray-deep: #2d3748;
+  --gray-medium: #4a5568;
+  --gray-light: #718096;
+  --gray-subtle: #a0aec0;
+  
+  /* 少女风彩色系统 */
+  --pink-primary: #ff6b9d;
+  --pink-secondary: #ffa8cc;
+  --pink-light: #ffd1dc;
+  --pink-pastel: #ffe4e6;
+  
+  --purple-primary: #a78bfa;
+  --purple-secondary: #c4b5fd;
+  --purple-light: #ddd6fe;
+  --purple-pastel: #ede9fe;
+  
+  --blue-primary: #60a5fa;
+  --blue-secondary: #93c5fd;
+  --blue-light: #bfdbfe;
+  --blue-pastel: #dbeafe;
+  
+  --green-primary: #34d399;
+  --green-secondary: #6ee7b7;
+  --green-light: #a7f3d0;
+  --green-pastel: #d1fae5;
+  
+  --amber-primary: #fbbf24;
+  --amber-secondary: #fcd34d;
+  --amber-light: #fde68a;
+  --amber-pastel: #fef3c7;
+  
+  --rose-primary: #fb7185;
+  --rose-secondary: #fda4af;
+  --rose-light: #fecaca;
+  --rose-pastel: #fef2f2;
+  
+  /* 玻璃质感效果 */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* 特殊效果色 */
+  --glow-pink: rgba(255, 107, 157, 0.6);
+  --glow-purple: rgba(167, 139, 250, 0.6);
+  --glow-blue: rgba(96, 165, 250, 0.6);
+  --glow-green: rgba(52, 211, 153, 0.6);
+  --glow-rose: rgba(251, 113, 133, 0.6);
+}
+
+/* 全局动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow-pink); }
+  50% { box-shadow: 0 0 30px var(--glow-purple), 0 0 40px var(--glow-pink); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes colorRestore {
+  0% { filter: grayscale(100%) contrast(50%) brightness(70%); }
+  100% { filter: grayscale(0%) contrast(100%) brightness(100%); }
+}
+
+/* 工具类 */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-color-restore {
+  animation: colorRestore 2s ease-in-out forwards;
+}
+
+/* 粒子效果 */
+.particle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.particle-heart {
+  color: var(--pink-primary);
+  animation: float 4s ease-in-out infinite;
+}
+
+.particle-star {
+  color: var(--amber-primary);
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* 场景过渡 */
+.scene-transition {
+  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 灰色主题玻璃质感对话框 */
+.dialog-box {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.25) 0%, 
+    rgba(248, 250, 252, 0.15) 100%);
+  backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* 少女风按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, 
+    var(--pink-primary) 0%, 
+    var(--purple-primary) 50%,
+    var(--blue-primary) 100%);
+  box-shadow: 
+    0 10px 25px var(--glow-pink),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 20px 40px var(--glow-pink),
+    0 0 30px var(--glow-purple),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* 灰色主题玻璃卡片 */
+.glass-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(248, 250, 252, 0.1) 100%);
+  backdrop-filter: blur(30px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* 少女风渐变背景 */
+.gradient-dreamy {
+  background: linear-gradient(135deg,
+    #ff9a9e 0%,
+    #fecfef 25%,
+    #fecfef 50%,
+    #a8edea 75%,
+    #fed6e3 100%);
+}
+
+.gradient-sunset {
+  background: linear-gradient(135deg,
+    #ff9a56 0%,
+    #ff6b9d 25%,
+    #c44569 50%,
+    #f8b500 75%,
+    #ffeaa7 100%);
+}
+
+.gradient-ocean {
+  background: linear-gradient(135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #6dd5ed 50%,
+    #2193b0 75%,
+    #a8edea 100%);
+}
+
+.gradient-forest {
+  background: linear-gradient(135deg,
+    #56ab2f 0%,
+    #a8e6cf 25%,
+    #88d8a3 50%,
+    #4ecdc4 75%,
+    #44a08d 100%);
+}
+
+/* 进度指示器 */
+.progress-dot {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-dot.active {
+  background: linear-gradient(135deg, var(--pink-primary) 0%, var(--purple-primary) 100%);
+  box-shadow: 0 0 20px var(--glow-pink);
+}
+
+/* 交互元素 */
+.interactive-element {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-element:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.interactive-element:active {
+  transform: scale(0.95);
+}
+
+/* 手机端优化 */
+@media (max-width: 768px) {
+  .interactive-element {
+    /* 增大手机端点击区域 */
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .interactive-element:hover {
+    /* 手机端不需要hover效果 */
+    transform: none;
+    filter: none;
+  }
+  
+  .interactive-element:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+  
+  /* 手机端字体大小调整 */
+  .mobile-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .mobile-subtitle {
+    font-size: 1.125rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* 手机端间距优化 */
+  .mobile-spacing {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  /* 手机端按钮优化 */
+  .mobile-button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+  }
+}
+
+/* 涟漪效果 */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:active::after {
+  width: 300px;
+  height: 300px;
+}

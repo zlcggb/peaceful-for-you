@@ -47,75 +47,175 @@ const Chapter2: React.FC<Chapter2Props> = ({ onComplete }) => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Split Screen Background */}
+      {/* 清新海洋风分屏背景 */}
       <div className="absolute inset-0 flex">
-        {/* Left Side - Biological Island (Bright) */}
-        <div className={`w-1/2 relative transition-all duration-2000 ${sceneRestored ? 'filter-none' : 'filter grayscale'}`}>
-          <div className="w-full h-full bg-gradient-to-b from-blue-400 via-green-400 to-green-500">
-            {/* Island Elements */}
-            <div className="absolute bottom-0 w-full h-2/3 bg-green-600 rounded-t-full"></div>
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-              <div className="flex space-x-4">
-                <div className="w-8 h-12 bg-pink-400 rounded-full"></div>
-                <div className="w-8 h-12 bg-blue-400 rounded-full"></div>
+        {/* 左侧 - 梦幻生物岛 */}
+        <div className={`w-1/2 relative scene-transition ${sceneRestored ? 'animate-color-restore' : 'filter grayscale contrast-75'}`}>
+          <div className="w-full h-full gradient-ocean relative overflow-hidden">
+            {/* Sky Elements */}
+            <div className="absolute top-10 left-10 w-20 h-12 bg-white/40 rounded-full animate-float"></div>
+            <div className="absolute top-20 right-16 w-16 h-8 bg-white/30 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+            
+            {/* Sun */}
+            <div className={`absolute top-12 right-12 w-12 h-12 rounded-full ${sceneRestored ? 'bg-yellow-300 animate-glow' : 'bg-yellow-500'}`}></div>
+            
+            {/* Enhanced Island */}
+            <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-green-700 via-green-600 to-green-500 rounded-t-full">
+              {/* Island Texture */}
+              <div className="absolute inset-0 opacity-30">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-green-800 rounded-full"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`
+                    }}
+                  ></div>
+                ))}
               </div>
-              <div className="text-center mt-2 text-xs text-white">👫</div>
             </div>
-            {/* Trees */}
-            {[...Array(6)].map((_, i) => (
+            
+            {/* Enhanced Characters */}
+            <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2">
+              <div className="flex space-x-6 items-end">
+                <div className="relative">
+                  <div className="w-10 h-16 bg-gradient-to-b from-pink-400 to-pink-500 rounded-full"></div>
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-pink-300 rounded-full"></div>
+                </div>
+                <div className="relative">
+                  <div className="w-10 h-16 bg-gradient-to-b from-blue-400 to-blue-500 rounded-full"></div>
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-300 rounded-full"></div>
+                </div>
+              </div>
+              <div className="text-center mt-3 text-2xl animate-float">👫</div>
+              {sceneRestored && (
+                <div className="text-center mt-2 text-white text-sm font-medium">快乐的时光</div>
+              )}
+            </div>
+            
+            {/* Enhanced Trees */}
+            {[...Array(8)].map((_, i) => (
               <div
                 key={i}
-                className="absolute bottom-20 w-4 h-8 bg-green-800 rounded-full"
+                className="absolute bottom-20"
                 style={{
-                  left: `${20 + i * 12}%`,
-                  bottom: `${20 + Math.random() * 10}%`
+                  left: `${15 + i * 10}%`,
+                  bottom: `${25 + Math.random() * 15}%`
                 }}
-              ></div>
+              >
+                <div className="w-2 h-12 bg-amber-800"></div>
+                <div className="w-6 h-6 bg-green-700 rounded-full -mt-2 mx-auto"></div>
+              </div>
             ))}
+            
+            {/* Bike Path */}
+            <div className="absolute bottom-16 left-4 right-4 h-2 bg-yellow-600/50 rounded-full"></div>
           </div>
         </div>
 
-        {/* Right Side - Dark Road */}
-        <div className={`w-1/2 relative transition-all duration-2000 ${sceneRestored ? 'bg-gradient-to-b from-purple-900 via-indigo-900 to-blue-900' : 'bg-gradient-to-b from-gray-900 via-black to-gray-800'}`}>
-          {/* Road */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-full bg-gray-700"></div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-yellow-400 opacity-50"></div>
+        {/* Right Side - Enhanced Dark Road */}
+        <div className={`w-1/2 relative scene-transition ${sceneRestored ? 'bg-gradient-to-b from-indigo-900 via-purple-900 to-blue-900' : 'bg-gradient-to-b from-gray-900 via-black to-gray-800'}`}>
+          {/* Enhanced Road */}
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-full bg-gradient-to-t from-gray-700 to-gray-600"></div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-full bg-yellow-400 opacity-60"></div>
+          
+          {/* Road Markings */}
+          {[...Array(10)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute left-1/2 transform -translate-x-1/2 w-1 h-8 bg-white opacity-40"
+              style={{ bottom: `${i * 10}%` }}
+            ></div>
+          ))}
           
           {/* Scary Elements (before restoration) */}
           {!sceneRestored && (
             <>
-              <div className="absolute top-1/3 right-8 w-12 h-16 bg-gray-600 rounded-lg">
-                <div className="text-center text-xs text-red-400 mt-2">骨灰屋</div>
+              <div className="absolute top-1/3 right-8 w-16 h-20 bg-gray-600 rounded-lg shadow-2xl">
+                <div className="w-full h-4 bg-gray-500 rounded-t-lg"></div>
+                <div className="text-center text-xs text-red-400 mt-2 font-bold">骨灰屋</div>
+                <div className="text-center text-xs text-red-300 mt-1">😰</div>
               </div>
-              <div className="absolute top-1/2 left-8 w-12 h-16 bg-gray-600 rounded-lg">
-                <div className="text-center text-xs text-red-400 mt-2">骨灰屋</div>
+              <div className="absolute top-1/2 left-8 w-16 h-20 bg-gray-600 rounded-lg shadow-2xl">
+                <div className="w-full h-4 bg-gray-500 rounded-t-lg"></div>
+                <div className="text-center text-xs text-red-400 mt-2 font-bold">骨灰屋</div>
+                <div className="text-center text-xs text-red-300 mt-1">😨</div>
               </div>
+              
+              {/* Spooky Atmosphere */}
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-red-400/30 rounded-full animate-pulse"
+                  style={{
+                    left: `${20 + Math.random() * 60}%`,
+                    top: `${30 + Math.random() * 40}%`,
+                    animationDelay: `${i * 0.5}s`
+                  }}
+                ></div>
+              ))}
             </>
           )}
           
-          {/* Moonlight (after restoration) */}
+          {/* Beautiful Night Scene (after restoration) */}
           {sceneRestored && (
             <>
-              <div className="absolute top-10 right-10 w-16 h-16 bg-yellow-200 rounded-full opacity-80"></div>
-              <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2">
-                <div className="flex space-x-2">
-                  <div className="w-4 h-8 bg-pink-400 rounded-full"></div>
-                  <div className="w-4 h-8 bg-blue-400 rounded-full"></div>
-                </div>
-                <div className="text-center mt-1 text-xs text-white">👫</div>
+              {/* Moon */}
+              <div className="absolute top-12 right-12 w-20 h-20 bg-gradient-to-br from-yellow-200 to-yellow-300 rounded-full animate-glow">
+                <div className="absolute inset-2 bg-yellow-100/30 rounded-full"></div>
               </div>
+              
+              {/* Moonlight Rays */}
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute top-12 right-12 w-1 h-32 bg-yellow-200/20 origin-bottom animate-pulse"
+                  style={{
+                    transform: `rotate(${-30 + i * 15}deg)`,
+                    animationDelay: `${i * 0.3}s`
+                  }}
+                ></div>
+              ))}
+              
+              {/* Walking Together */}
+              <div className="absolute bottom-36 left-1/2 transform -translate-x-1/2">
+                <div className="flex space-x-3 items-end">
+                  <div className="w-6 h-12 bg-gradient-to-b from-pink-400 to-pink-500 rounded-full"></div>
+                  <div className="w-6 h-12 bg-gradient-to-b from-blue-400 to-blue-500 rounded-full"></div>
+                </div>
+                <div className="text-center mt-2 text-xl animate-float">👫</div>
+                <div className="text-center mt-2 text-purple-200 text-sm font-medium">一起走过黑暗</div>
+              </div>
+              
+              {/* Stars */}
+              {[...Array(15)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-yellow-200 rounded-full animate-sparkle"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 50}%`,
+                    animationDelay: `${i * 0.2}s`
+                  }}
+                ></div>
+              ))}
             </>
           )}
         </div>
       </div>
 
-      {/* Chapter Title */}
+      {/* 海洋风章节标题 */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3">
-          <div className="flex items-center space-x-3">
-            <Heart className="w-6 h-6 text-green-400" />
-            <h2 className="text-2xl font-bold text-white">第二章：生物岛的温情与归途的恐惧</h2>
+        <div className="glass-card rounded-2xl px-8 py-4 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-teal-400 to-green-400"></div>
+          <div className="flex items-center space-x-4">
+            <div className="p-2 bg-blue-400/20 rounded-full">
+              <Heart className="w-6 h-6 text-blue-200" />
+            </div>
+            <h2 className="text-xl font-bold text-white tracking-wide">第二章：生物岛的温情与归途的恐惧</h2>
           </div>
+          <div className="absolute -top-2 -right-2 w-8 h-8 bg-teal-300/20 rounded-full blur-lg"></div>
         </div>
       </div>
 
